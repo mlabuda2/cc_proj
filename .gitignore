@@ -1,0 +1,9 @@
+__pycache__/*
+lib
+bin
+lib64
+include
+venv
+share
+pyvenv*
+*.pyc

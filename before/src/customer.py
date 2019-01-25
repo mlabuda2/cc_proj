@@ -1,5 +1,5 @@
 from movie import Movie
-
+from rental import Rental
 class Customer(object):
     
     def __init__(self, name):
@@ -15,7 +15,7 @@ class Customer(object):
     def statement(self):
         total_amount = 0
         frequent_renter_points = 0
-        result = 'Rental Record for ' + self.get_name()
+        result = 'Rental Record for ' + self.get_name() + '\n'
         
         for each in self._rentals:
             this_amount = 0
@@ -30,7 +30,7 @@ class Customer(object):
                 this_amount += 1.5
                 if each.get_days_rented() > 3:
                     this_amount += (each.get_days_rented() - 3) * 1.5
-
+ 
             # add frequent renter points
             frequent_renter_points += 1
             # add bonus for a two day new release rental
@@ -38,10 +38,19 @@ class Customer(object):
                 frequent_renter_points += 1
 
             # show figures for this rental
-            result += '\t' + each.get_movie().get_title() + this_amount + '\n'
+            result += '\t' + each.get_movie().get_title() + '\t' + str(this_amount) + '\n'
             total_amount += this_amount
 
         # add footer lines
-        result += 'Amount owed is ' + total_amount + '\n'
-        result += 'You earned ' + frequent_renter_points + ' frequent renter points'
+        result += 'Amount owed is ' + str(total_amount) + '\n'
+        result += 'You earned ' + str(frequent_renter_points) + ' frequent renter points'
         return result
+
+if __name__ == "__main__":
+    customer = Customer("Mati")
+    movie = Movie("Madagascar", 2)
+    print(movie.get_price_code())
+    rental = Rental(movie, 3)
+    # print(customer.get_name())
+    print(customer.add_rental(rental))
+    print(customer.statement())
