@@ -1,5 +1,5 @@
 from movie import Movie
-from rental import Rental
+
 class Customer(object):
     
     def __init__(self, name):
@@ -17,40 +17,22 @@ class Customer(object):
         frequent_renter_points = 0
         result = 'Rental Record for ' + self.get_name() + '\n'
         
-        for each in self._rentals:
-            this_amount = 0
-            # determine amounts for each line
-            if each.get_movie().get_price_code() == Movie.REGULAR:
-                this_amount += 2;
-                if each.get_days_rented() > 2:
-                    this_amount += (each.get_days_rented() - 2) * 1.5
-            elif each.get_movie().get_price_code() == Movie.NEW_RELEASE:
-                this_amount += each.get_days_rented() * 3
-            elif each.get_movie().get_price_code() == Movie.CHILDRENS: 
-                this_amount += 1.5
-                if each.get_days_rented() > 3:
-                    this_amount += (each.get_days_rented() - 3) * 1.5
- 
+        for rental in self._rentals:
+            # determine amounts for rental line
+            this_amount = rental.get_charge()
+
             # add frequent renter points
             frequent_renter_points += 1
             # add bonus for a two day new release rental
-            if each.get_movie().get_price_code() == Movie.NEW_RELEASE and each.get_days_rented() > 1:
+            if rental.get_movie().get_price_code() == Movie.NEW_RELEASE and rental.get_days_rented() > 1:
                 frequent_renter_points += 1
 
             # show figures for this rental
-            result += '\t' + each.get_movie().get_title() + '\t' + str(this_amount) + '\n'
+            result += '\t' + rental.get_movie().get_title() + '\t' + '{0:.1f}'.format(this_amount) + '\n'
             total_amount += this_amount
 
         # add footer lines
-        result += 'Amount owed is ' + str(total_amount) + '\n'
+        result += 'Amount owed is ' + '{0:.1f}'.format(total_amount) + '\n'
         result += 'You earned ' + str(frequent_renter_points) + ' frequent renter points'
         return result
 
-if __name__ == "__main__":
-    customer = Customer("Mati")
-    movie = Movie("Madagascar", 2)
-    print(movie.get_price_code())
-    rental = Rental(movie, 3)
-    # print(customer.get_name())
-    print(customer.add_rental(rental))
-    print(customer.statement())
