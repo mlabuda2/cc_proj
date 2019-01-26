@@ -48,9 +48,12 @@ class Customer(object):
 
 if __name__ == "__main__":
     customer = Customer("Mati")
-    movie = Movie("Madagascar", 2)
-    print(movie.get_price_code())
-    rental = Rental(movie, 3)
-    # print(customer.get_name())
-    print(customer.add_rental(rental))
+
+    movie1 = Movie("Madagascar", 2)
+    rental1 = Rental(movie1, 3)
+    customer.add_rental(rental1)
+    movie2 = Movie("Django", 1)
+    rental2 = Rental(movie2, 3)
+    customer.add_rental(rental2)
+    
     print(customer.statement())
