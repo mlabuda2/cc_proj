@@ -1,5 +1,3 @@
-
-
 class Movie(object):
 
     CHILDRENS = 2
