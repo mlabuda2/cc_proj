@@ -4,7 +4,7 @@
 
 | Wykonawcy | Prowadzący | Język<br>programowania | Narzędzie<br>analizy kodu | Źródło kodu | Data oddania |
 :-:|:-:|:-:|:-:|:-:|:-:
-| Mateusz Labuda<br> Wojciech Januszk <br>Michał Gorzkowski | dr Bzyl Włodzimierz | [Python](https://www.python.org/) | [Radon](https://radon.readthedocs.io/en/latest/) | [Martin Fowler's book Refactoring](https://martinfowler.com/books/refactoring.htmla) | 26.01.2019
+| Mateusz Labuda<br> Wojciech Januszk <br>Michał Gorzkowski | dr Bzyl Włodzimierz | [Python](https://www.python.org/) | [Radon](https://radon.readthedocs.io/en/latest/) | [Martin Fowler's book Refactoring](https://martinfowler.com/books/refactoring.html) | 26.01.2019
 
 ---
 
